@@ -237,6 +237,7 @@ Makefile: ../TicketMaster/TicketMaster.pro D:/QtInstall/5.9.3/mingw53_32/mkspecs
 		D:/QtInstall/5.9.3/mingw53_32/lib/qtmaind.prl \
 		D:/QtInstall/5.9.3/mingw53_32/lib/Qt5Widgets.prl \
 		D:/QtInstall/5.9.3/mingw53_32/lib/Qt5Gui.prl \
+		D:/QtInstall/5.9.3/mingw53_32/lib/Qt5Sql.prl \
 		D:/QtInstall/5.9.3/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile ..\TicketMaster\TicketMaster.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 D:/QtInstall/5.9.3/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -415,6 +416,7 @@ D:/QtInstall/5.9.3/mingw53_32/mkspecs/features/lex.prf:
 D:/QtInstall/5.9.3/mingw53_32/lib/qtmaind.prl:
 D:/QtInstall/5.9.3/mingw53_32/lib/Qt5Widgets.prl:
 D:/QtInstall/5.9.3/mingw53_32/lib/Qt5Gui.prl:
+D:/QtInstall/5.9.3/mingw53_32/lib/Qt5Sql.prl:
 D:/QtInstall/5.9.3/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\TicketMaster\TicketMaster.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
