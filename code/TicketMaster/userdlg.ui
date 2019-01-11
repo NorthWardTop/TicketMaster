@@ -26,7 +26,7 @@
     <string>退出登录</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -88,7 +88,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="btn_OK">
+       <widget class="QPushButton" name="btn_buy">
         <property name="text">
          <string>确认购票</string>
         </property>

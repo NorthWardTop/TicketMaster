@@ -1,18 +1,9 @@
-#include "mainwindow.h"
-#include <QApplication>
-#include "admindlg.h"
-#include <QCoreApplication>
-#include <QDebug>
-#include <QtSql/QSqlDatabase>
-#include <QStringList>
-#include <iostream>
-#include <Qtsql/QSqlDatabase>
-#include <Qtsql/QSqlQuery>
-#include <QtSql/QSql>
-#include <QDebug>
-#include "database.h"
-#include "macro.h"
 
+#include <QApplication>
+#include <QDebug>
+#include "mainwindow.h"
+
+#include "database.h"
 
 
 int main(int argc, char *argv[])
@@ -63,8 +54,9 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     MainWindow mainWnd;
-
-
+    connDataBase();
+    QSqlQuery query;
+   // sqlExec(query,"select * from fee;",3);
     mainWnd.show();
 
 

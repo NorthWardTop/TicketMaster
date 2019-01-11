@@ -28,7 +28,8 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     admindlg.cpp \
-    userdlg.cpp
+    userdlg.cpp \
+    database.cpp
 
 HEADERS += \
         mainwindow.h \

@@ -30,7 +30,7 @@ class Ui_UserDlg
 {
 public:
     QPushButton *btn_logout;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
@@ -39,7 +39,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QComboBox *cobox_Discount;
-    QPushButton *btn_OK;
+    QPushButton *btn_buy;
     QVBoxLayout *verticalLayout_2;
     QListView *listView;
     QPushButton *btn_refund;
@@ -52,22 +52,22 @@ public:
         btn_logout = new QPushButton(UserDlg);
         btn_logout->setObjectName(QStringLiteral("btn_logout"));
         btn_logout->setGeometry(QRect(230, 440, 75, 23));
-        widget = new QWidget(UserDlg);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(40, 50, 471, 321));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(UserDlg);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(40, 50, 471, 321));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
 
         horizontalLayout->addWidget(label);
 
-        date_useDate = new QDateEdit(widget);
+        date_useDate = new QDateEdit(layoutWidget);
         date_useDate->setObjectName(QStringLiteral("date_useDate"));
 
         horizontalLayout->addWidget(date_useDate);
@@ -77,12 +77,12 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         horizontalLayout_2->addWidget(label_2);
 
-        cobox_Discount = new QComboBox(widget);
+        cobox_Discount = new QComboBox(layoutWidget);
         cobox_Discount->setObjectName(QStringLiteral("cobox_Discount"));
 
         horizontalLayout_2->addWidget(cobox_Discount);
@@ -90,22 +90,22 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
-        btn_OK = new QPushButton(widget);
-        btn_OK->setObjectName(QStringLiteral("btn_OK"));
+        btn_buy = new QPushButton(layoutWidget);
+        btn_buy->setObjectName(QStringLiteral("btn_buy"));
 
-        verticalLayout->addWidget(btn_OK);
+        verticalLayout->addWidget(btn_buy);
 
 
         horizontalLayout_3->addLayout(verticalLayout);
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        listView = new QListView(widget);
+        listView = new QListView(layoutWidget);
         listView->setObjectName(QStringLiteral("listView"));
 
         verticalLayout_2->addWidget(listView);
 
-        btn_refund = new QPushButton(widget);
+        btn_refund = new QPushButton(layoutWidget);
         btn_refund->setObjectName(QStringLiteral("btn_refund"));
 
         verticalLayout_2->addWidget(btn_refund);
@@ -132,7 +132,7 @@ public:
          << QApplication::translate("UserDlg", "\350\200\201\344\272\272\347\245\250", Q_NULLPTR)
          << QApplication::translate("UserDlg", "\345\233\242\344\275\223\347\245\250", Q_NULLPTR)
         );
-        btn_OK->setText(QApplication::translate("UserDlg", "\347\241\256\350\256\244\350\264\255\347\245\250", Q_NULLPTR));
+        btn_buy->setText(QApplication::translate("UserDlg", "\347\241\256\350\256\244\350\264\255\347\245\250", Q_NULLPTR));
         btn_refund->setText(QApplication::translate("UserDlg", "\351\200\200\347\245\250", Q_NULLPTR));
     } // retranslateUi
 

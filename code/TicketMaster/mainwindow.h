@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "macro.h"
 #include "userdlg.h"
+#include "admindlg.h"
 
 namespace Ui {
 class MainWindow;

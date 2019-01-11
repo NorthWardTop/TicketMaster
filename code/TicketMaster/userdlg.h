@@ -2,6 +2,7 @@
 #define USERDLG_H
 
 #include <QDialog>
+#include <Qtsql/QSqlQuery>
 
 namespace Ui {
 class UserDlg;
@@ -15,8 +16,11 @@ public:
     explicit UserDlg(QWidget *parent = 0);
     ~UserDlg();
 public:
-
-    QString userName;
+    QString userName;//保存用户名
+public:
+    void updateList();
+public slots:
+    void onBuy();
 private:
     Ui::UserDlg *ui;
 };
