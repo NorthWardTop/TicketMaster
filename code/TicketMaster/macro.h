@@ -14,16 +14,21 @@
 #include <Qtsql/QSqlQuery>
 #include <QtSql/QSql>
 #include <QDebug>
-#include "database.h"
 
-//数据库相关宏
+
+//数据库信息相关宏
 #define DB_DRIVERS  "QMYSQL"
 #define HOST        "127.0.0.1"
 #define DB_NAME     "ticketmaster"
 #define DB_USERNAME "root"
 #define DB_PASSWD   "lyh2o16"
 
-//
+//数据库存储过程
+#define PROC_
+
+
+
+//全局变量
 
 
 #endif // MACRO_H

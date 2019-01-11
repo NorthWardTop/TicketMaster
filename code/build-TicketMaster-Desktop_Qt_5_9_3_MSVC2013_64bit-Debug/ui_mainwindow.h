@@ -27,9 +27,9 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QLabel *label;
-    QTextEdit *textEdit;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QTextEdit *edit_user;
+    QPushButton *btn_login;
+    QPushButton *btn_cancel;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -42,15 +42,15 @@ public:
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(100, 80, 54, 31));
-        textEdit = new QTextEdit(centralWidget);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(150, 80, 104, 31));
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(90, 170, 75, 23));
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(200, 170, 75, 23));
+        edit_user = new QTextEdit(centralWidget);
+        edit_user->setObjectName(QStringLiteral("edit_user"));
+        edit_user->setGeometry(QRect(150, 80, 104, 31));
+        btn_login = new QPushButton(centralWidget);
+        btn_login->setObjectName(QStringLiteral("btn_login"));
+        btn_login->setGeometry(QRect(90, 170, 75, 23));
+        btn_cancel = new QPushButton(centralWidget);
+        btn_cancel->setObjectName(QStringLiteral("btn_cancel"));
+        btn_cancel->setGeometry(QRect(200, 170, 75, 23));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -62,8 +62,8 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         label->setText(QApplication::translate("MainWindow", "\347\224\250\346\210\267\345\220\215", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("MainWindow", "\347\231\273\345\275\225", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("MainWindow", "\345\217\226\346\266\210", Q_NULLPTR));
+        btn_login->setText(QApplication::translate("MainWindow", "\347\231\273\345\275\225", Q_NULLPTR));
+        btn_cancel->setText(QApplication::translate("MainWindow", "\345\217\226\346\266\210", Q_NULLPTR));
     } // retranslateUi
 
 };

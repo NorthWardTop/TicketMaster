@@ -6,7 +6,6 @@ UserDlg::UserDlg(QWidget *parent) :
     ui(new Ui::UserDlg)
 {
     ui->setupUi(this);
-    this->setWindowTitle("用户购票-");
 }
 
 UserDlg::~UserDlg()

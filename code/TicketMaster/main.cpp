@@ -11,6 +11,9 @@
 #include <QtSql/QSql>
 #include <QDebug>
 #include "database.h"
+#include "macro.h"
+
+
 
 int main(int argc, char *argv[])
 {
@@ -52,12 +55,20 @@ int main(int argc, char *argv[])
 //          }
 //    }
 
-    connDataBase();
+//    connDataBase();
 
-    QSqlQuery query;
-    QString sql="select * from fee;";
-    sqlExec(query,sql);
+//    QSqlQuery query;
+//    QString sql="select * from fee;";
+//    sqlExec(query,sql,2);
+
+    QApplication a(argc, argv);
+    MainWindow mainWnd;
 
 
-    return 0;
+    mainWnd.show();
+
+
+    return a.exec();
+
+
 }

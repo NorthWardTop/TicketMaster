@@ -14,9 +14,7 @@ class UserDlg : public QDialog
 public:
     explicit UserDlg(QWidget *parent = 0);
     ~UserDlg();
-public:
 
-    QString userName;
 private:
     Ui::UserDlg *ui;
 };
