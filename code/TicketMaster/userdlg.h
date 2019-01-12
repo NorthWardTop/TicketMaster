@@ -19,8 +19,12 @@ public:
     QString userName;//保存用户名
 public:
     void updateList();
+signals:
+    void startMainWnd();
 public slots:
     void onBuy();
+    void onRefund();
+    void onLogout();
 private:
     Ui::UserDlg *ui;
 };

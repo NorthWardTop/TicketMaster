@@ -19,8 +19,8 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -41,7 +41,7 @@ public:
     QComboBox *cobox_Discount;
     QPushButton *btn_buy;
     QVBoxLayout *verticalLayout_2;
-    QListView *listView;
+    QTableView *tableView;
     QPushButton *btn_refund;
 
     void setupUi(QDialog *UserDlg)
@@ -100,10 +100,10 @@ public:
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        listView = new QListView(layoutWidget);
-        listView->setObjectName(QStringLiteral("listView"));
+        tableView = new QTableView(layoutWidget);
+        tableView->setObjectName(QStringLiteral("tableView"));
 
-        verticalLayout_2->addWidget(listView);
+        verticalLayout_2->addWidget(tableView);
 
         btn_refund = new QPushButton(layoutWidget);
         btn_refund->setObjectName(QStringLiteral("btn_refund"));

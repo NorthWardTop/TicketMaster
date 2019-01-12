@@ -99,7 +99,7 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QListView" name="listView"/>
+       <widget class="QTableView" name="tableView"/>
       </item>
       <item>
        <widget class="QPushButton" name="btn_refund">

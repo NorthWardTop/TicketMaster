@@ -6,6 +6,10 @@
 #include "database.h"
 
 
+//全部变量---主窗口
+
+
+
 int main(int argc, char *argv[])
 {
 //    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
@@ -53,10 +57,10 @@ int main(int argc, char *argv[])
 //    sqlExec(query,sql,2);
 
     QApplication a(argc, argv);
-    MainWindow mainWnd;
     connDataBase();
     QSqlQuery query;
    // sqlExec(query,"select * from fee;",3);
+    MainWindow mainWnd;
     mainWnd.show();
 
 

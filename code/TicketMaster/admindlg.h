@@ -14,7 +14,12 @@ class AdminDlg : public QDialog
 public:
     explicit AdminDlg(QWidget *parent = 0);
     ~AdminDlg();
-
+public slots:
+    void onQuery();
+    void onLogout();
+    void onClear();
+signals:
+    void startMainWnd();
 private:
     Ui::AdminDlg *ui;
 };

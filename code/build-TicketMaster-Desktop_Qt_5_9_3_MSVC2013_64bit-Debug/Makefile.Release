@@ -294,6 +294,10 @@ release\moc_mainwindow.cpp: D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QMa
 		..\TicketMaster\userdlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qdialog.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlQuery \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqlquery.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qtsqlglobal.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqldatabase.h \
 		..\TicketMaster\admindlg.h \
 		..\TicketMaster\mainwindow.h \
 		release\moc_predefs.h \
@@ -507,6 +511,10 @@ release\moc_userdlg.cpp: D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialo
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtCore\qfiledevice.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qvector2d.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qtouchdevice.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlQuery \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqlquery.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qtsqlglobal.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqldatabase.h \
 		..\TicketMaster\userdlg.h \
 		release\moc_predefs.h \
 		D:\QtInstall\5.9.3\msvc2013_64\bin\moc.exe
@@ -656,15 +664,15 @@ release\main.obj: ..\TicketMaster\main.cpp D:\QtInstall\5.9.3\msvc2013_64\includ
 		../TicketMaster/userdlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qdialog.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlQuery \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqlquery.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qtsqlglobal.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqldatabase.h \
 		../TicketMaster/admindlg.h \
 		../TicketMaster/database.h \
 		../TicketMaster/macro.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlDatabase \
 		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqldatabase.h \
-		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qtsqlglobal.h \
-		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlQuery \
-		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqlquery.h \
-		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqldatabase.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\QSql
 
 release\mainwindow.obj: ..\TicketMaster\mainwindow.cpp ../TicketMaster/mainwindow.h \
@@ -774,6 +782,10 @@ release\mainwindow.obj: ..\TicketMaster\mainwindow.cpp ../TicketMaster/mainwindo
 		../TicketMaster/userdlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qdialog.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlQuery \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqlquery.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qtsqlglobal.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqldatabase.h \
 		../TicketMaster/admindlg.h \
 		ui_mainwindow.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtCore\QVariant \
@@ -822,7 +834,9 @@ release\mainwindow.obj: ..\TicketMaster\mainwindow.cpp ../TicketMaster/mainwindo
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QPushButton \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qpushbutton.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qabstractbutton.h \
-		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QWidget
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QWidget \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QMessageBox \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qmessagebox.h
 
 release\admindlg.obj: ..\TicketMaster\admindlg.cpp ../TicketMaster/admindlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
@@ -982,7 +996,18 @@ release\admindlg.obj: ..\TicketMaster\admindlg.cpp ../TicketMaster/admindlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qtextformat.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qpen.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QVBoxLayout \
-		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QWidget
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QWidget \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\QSqlQuery \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqlquery.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qtsqlglobal.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqldatabase.h \
+		../TicketMaster/database.h \
+		../TicketMaster/macro.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlDatabase \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqldatabase.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlQuery \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\QSql \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtCore\QDebug
 
 release\userdlg.obj: ..\TicketMaster\userdlg.cpp ../TicketMaster/userdlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
@@ -1086,6 +1111,10 @@ release\userdlg.obj: ..\TicketMaster\userdlg.cpp ../TicketMaster/userdlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtCore\qfiledevice.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qvector2d.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qtouchdevice.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlQuery \
+		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqlquery.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qtsqlglobal.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqldatabase.h \
 		ui_userdlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtCore\QVariant \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QAction \
@@ -1131,11 +1160,11 @@ release\userdlg.obj: ..\TicketMaster\userdlg.cpp ../TicketMaster/userdlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtCore\qitemselectionmodel.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QLabel \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qlabel.h \
-		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QListView \
-		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qlistview.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QPushButton \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qpushbutton.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qabstractbutton.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QTableView \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qtableview.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QVBoxLayout \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QWidget \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtCore\QDebug \
@@ -1143,11 +1172,11 @@ release\userdlg.obj: ..\TicketMaster\userdlg.cpp ../TicketMaster/userdlg.h \
 		../TicketMaster/macro.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlDatabase \
 		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqldatabase.h \
-		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qtsqlglobal.h \
-		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlQuery \
-		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqlquery.h \
-		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqldatabase.h \
-		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\QSql
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\QSql \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\QSqlQueryModel \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqlquerymodel.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QMessageBox \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qmessagebox.h
 
 release\database.obj: ..\TicketMaster\database.cpp ../TicketMaster/database.h \
 		../TicketMaster/macro.h \

@@ -12,7 +12,7 @@
 extern int connDataBase();
 
 //根据传入QSqlQuery和sql语句查询(游标,sql语句)
-extern void sqlExec(QSqlQuery& query, QString sql, int col);
+extern void sqlExec(QSqlQuery& query, QString sql, int col=0);
 
 #endif // DATABASE_H
 
