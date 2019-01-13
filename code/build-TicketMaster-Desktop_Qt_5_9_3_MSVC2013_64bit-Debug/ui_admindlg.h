@@ -30,7 +30,7 @@ class Ui_AdminDlg
 {
 public:
     QPushButton *btn_logout;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_5;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout;
@@ -56,22 +56,22 @@ public:
         btn_logout = new QPushButton(AdminDlg);
         btn_logout->setObjectName(QStringLiteral("btn_logout"));
         btn_logout->setGeometry(QRect(210, 320, 75, 23));
-        widget = new QWidget(AdminDlg);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(70, 30, 398, 227));
-        horizontalLayout_5 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(AdminDlg);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(70, 30, 398, 227));
+        horizontalLayout_5 = new QHBoxLayout(layoutWidget);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
 
         horizontalLayout->addWidget(label);
 
-        date_query = new QDateEdit(widget);
+        date_query = new QDateEdit(layoutWidget);
         date_query->setObjectName(QStringLiteral("date_query"));
 
         horizontalLayout->addWidget(date_query);
@@ -81,12 +81,12 @@ public:
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
 
         horizontalLayout_4->addWidget(label_3);
 
-        cobox_queryType = new QComboBox(widget);
+        cobox_queryType = new QComboBox(layoutWidget);
         cobox_queryType->setObjectName(QStringLiteral("cobox_queryType"));
 
         horizontalLayout_4->addWidget(cobox_queryType);
@@ -96,12 +96,12 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         horizontalLayout_2->addWidget(label_2);
 
-        cobox_choose = new QComboBox(widget);
+        cobox_choose = new QComboBox(layoutWidget);
         cobox_choose->setObjectName(QStringLiteral("cobox_choose"));
 
         horizontalLayout_2->addWidget(cobox_choose);
@@ -114,19 +114,19 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        edit_reslut = new QTextEdit(widget);
+        edit_reslut = new QTextEdit(layoutWidget);
         edit_reslut->setObjectName(QStringLiteral("edit_reslut"));
 
         verticalLayout->addWidget(edit_reslut);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        btn_query = new QPushButton(widget);
+        btn_query = new QPushButton(layoutWidget);
         btn_query->setObjectName(QStringLiteral("btn_query"));
 
         horizontalLayout_3->addWidget(btn_query);
 
-        btn_clear = new QPushButton(widget);
+        btn_clear = new QPushButton(layoutWidget);
         btn_clear->setObjectName(QStringLiteral("btn_clear"));
 
         horizontalLayout_3->addWidget(btn_clear);
@@ -158,10 +158,10 @@ public:
         cobox_choose->clear();
         cobox_choose->insertItems(0, QStringList()
          << QApplication::translate("AdminDlg", "\346\211\200\346\234\211", Q_NULLPTR)
-         << QApplication::translate("AdminDlg", "\346\210\220\344\272\272\347\245\250", Q_NULLPTR)
-         << QApplication::translate("AdminDlg", "\345\260\217\345\255\251\347\245\250", Q_NULLPTR)
-         << QApplication::translate("AdminDlg", "\350\200\201\344\272\272\347\245\250", Q_NULLPTR)
-         << QApplication::translate("AdminDlg", "\345\233\242\344\275\223\347\245\250", Q_NULLPTR)
+         << QApplication::translate("AdminDlg", "\346\210\220\344\272\272", Q_NULLPTR)
+         << QApplication::translate("AdminDlg", "\345\260\217\345\255\251", Q_NULLPTR)
+         << QApplication::translate("AdminDlg", "\350\200\201\344\272\272", Q_NULLPTR)
+         << QApplication::translate("AdminDlg", "\345\233\242\344\275\223", Q_NULLPTR)
         );
         btn_query->setText(QApplication::translate("AdminDlg", "\346\237\245\350\257\242", Q_NULLPTR));
         btn_clear->setText(QApplication::translate("AdminDlg", "\346\270\205\347\251\272", Q_NULLPTR));

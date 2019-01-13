@@ -33,12 +33,12 @@ public:
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout;
+    QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QDateEdit *date_useDate;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_2;
     QComboBox *cobox_Discount;
+    QLabel *lab_money;
     QPushButton *btn_buy;
     QVBoxLayout *verticalLayout_2;
     QTableView *tableView;
@@ -48,7 +48,7 @@ public:
     {
         if (UserDlg->objectName().isEmpty())
             UserDlg->setObjectName(QStringLiteral("UserDlg"));
-        UserDlg->resize(579, 520);
+        UserDlg->resize(579, 524);
         btn_logout = new QPushButton(UserDlg);
         btn_logout->setObjectName(QStringLiteral("btn_logout"));
         btn_logout->setGeometry(QRect(230, 440, 75, 23));
@@ -60,6 +60,8 @@ public:
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label = new QLabel(layoutWidget);
@@ -73,22 +75,20 @@ public:
         horizontalLayout->addWidget(date_useDate);
 
 
-        verticalLayout->addLayout(horizontalLayout);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_2 = new QLabel(layoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-
-        horizontalLayout_2->addWidget(label_2);
+        verticalLayout_3->addLayout(horizontalLayout);
 
         cobox_Discount = new QComboBox(layoutWidget);
         cobox_Discount->setObjectName(QStringLiteral("cobox_Discount"));
 
-        horizontalLayout_2->addWidget(cobox_Discount);
+        verticalLayout_3->addWidget(cobox_Discount);
+
+        lab_money = new QLabel(layoutWidget);
+        lab_money->setObjectName(QStringLiteral("lab_money"));
+
+        verticalLayout_3->addWidget(lab_money);
 
 
-        verticalLayout->addLayout(horizontalLayout_2);
+        verticalLayout->addLayout(verticalLayout_3);
 
         btn_buy = new QPushButton(layoutWidget);
         btn_buy->setObjectName(QStringLiteral("btn_buy"));
@@ -124,14 +124,14 @@ public:
         UserDlg->setWindowTitle(QApplication::translate("UserDlg", "Dialog", Q_NULLPTR));
         btn_logout->setText(QApplication::translate("UserDlg", "\351\200\200\345\207\272\347\231\273\345\275\225", Q_NULLPTR));
         label->setText(QApplication::translate("UserDlg", "\346\270\270\345\233\255\346\227\245\346\234\237:", Q_NULLPTR));
-        label_2->setText(QApplication::translate("UserDlg", "\344\274\230\346\203\240\351\200\211\351\241\271:", Q_NULLPTR));
         cobox_Discount->clear();
         cobox_Discount->insertItems(0, QStringList()
-         << QApplication::translate("UserDlg", "\346\210\220\344\272\272\347\245\250", Q_NULLPTR)
-         << QApplication::translate("UserDlg", "\345\204\277\347\253\245\347\245\250", Q_NULLPTR)
-         << QApplication::translate("UserDlg", "\350\200\201\344\272\272\347\245\250", Q_NULLPTR)
-         << QApplication::translate("UserDlg", "\345\233\242\344\275\223\347\245\250", Q_NULLPTR)
+         << QApplication::translate("UserDlg", "\346\210\220\344\272\272", Q_NULLPTR)
+         << QApplication::translate("UserDlg", "\345\260\217\345\255\251", Q_NULLPTR)
+         << QApplication::translate("UserDlg", "\350\200\201\344\272\272", Q_NULLPTR)
+         << QApplication::translate("UserDlg", "\345\233\242\344\275\223", Q_NULLPTR)
         );
+        lab_money->setText(QApplication::translate("UserDlg", "$", Q_NULLPTR));
         btn_buy->setText(QApplication::translate("UserDlg", "\347\241\256\350\256\244\350\264\255\347\245\250", Q_NULLPTR));
         btn_refund->setText(QApplication::translate("UserDlg", "\351\200\200\347\245\250", Q_NULLPTR));
     } // retranslateUi

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>579</width>
-    <height>520</height>
+    <height>524</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,50 +39,50 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>游园日期:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QDateEdit" name="date_useDate"/>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>优惠选项:</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>游园日期:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateEdit" name="date_useDate"/>
+          </item>
+         </layout>
         </item>
         <item>
          <widget class="QComboBox" name="cobox_Discount">
           <item>
            <property name="text">
-            <string>成人票</string>
+            <string>成人</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>儿童票</string>
+            <string>小孩</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>老人票</string>
+            <string>老人</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>团体票</string>
+            <string>团体</string>
            </property>
           </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lab_money">
+          <property name="text">
+           <string>$</string>
+          </property>
          </widget>
         </item>
        </layout>

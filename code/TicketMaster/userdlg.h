@@ -25,6 +25,7 @@ public slots:
     void onBuy();
     void onRefund();
     void onLogout();
+    void onChooseChange();
 private:
     Ui::UserDlg *ui;
 };

@@ -3,6 +3,7 @@
 #include <QDebug>
 #include "database.h"
 #include <QSqlQueryModel>
+
 #include <QMessageBox>
 
 UserDlg::UserDlg(QWidget *parent) :
@@ -16,14 +17,18 @@ UserDlg::UserDlg(QWidget *parent) :
     ui->date_useDate->setCalendarPopup(true);//设置日期弹出式选择
     ui->date_useDate->setDisplayFormat("yyyy-MM-dd");//设置日期显示格式
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);//设置整行选中
-
+    //ui->lab_money->setFont(QFont( "Timers" , 28 ,  QFont::Bold));
+    //ui->lab_money->setFont(QFont( "微软雅黑" , 28 ,  QFont::Bold));
+    ui->lab_money->setStyleSheet("background-color: rgb(250, 0, 0);font-size:60px;color:blue");
     //设置信号和槽
     connect(ui->btn_buy,SIGNAL(clicked(bool)),this,SLOT(onBuy()));    //点击buy,执行onBuy
     connect(ui->btn_refund,SIGNAL(clicked(bool)),this,SLOT(onRefund())); //点击refund,执行onRefund
     connect(ui->btn_logout,SIGNAL(clicked(bool)),this,SLOT(onLogout()));  //点击退出登录,执行关闭本窗口, 启动MainWnd
+    connect(ui->cobox_Discount,SIGNAL(currentIndexChanged(int)),this,SLOT(onChooseChange()));    //当优惠选项改变时候改变下面金额
 
     //设置初始化操作
-    this->updateList();//从数据库更新列表(初始化未成功)
+    this->updateList();//从数据库更新列表
+    this->onChooseChange();//刷新金额
 }
 
 UserDlg::~UserDlg()
@@ -37,10 +42,20 @@ void UserDlg::onBuy()
     QDate tmpDate=ui->date_useDate->date();
     QString useDate=tmpDate.toString("yyyy-MM-dd");//根据日期
     QString choose = ui->cobox_Discount->currentText();//根据优惠选项
-    //将执行SQL语句: call procBuyTicket(useDate,choose+)
-    QString sql=  "call procBuyTicket('"+useDate+"','"+choose+"','user');";//调用购票存储过程
-    QSqlQuery query;
-    sqlExec(query,sql,3);
+
+    if(tmpDate>=QDate::currentDate())
+    {
+        //将执行SQL语句: call procBuyTicket(useDate,choose+)
+        QString sql=  "call procBuyTicket('"+useDate+"','"+choose+"','user');";//调用购票存储过程
+        QSqlQuery query;
+        sqlExec(query,sql,3);
+    }
+    else
+    {
+        qDebug()<<"超过游览时间, 不能购票!";
+        //弹出提示框
+        QMessageBox::information(this, QString::fromLocal8Bit("Refund failed"),QString::fromLocal8Bit("No tickets can be purchased beyond the tour time."));
+    }
 
     this->updateList();
 }
@@ -83,6 +98,19 @@ void UserDlg::onLogout()
     emit startMainWnd();//发送启动MainWnd的信号
 }
 
+//槽:当优惠选项改变时候, 查库改变相应的金额
+void UserDlg::onChooseChange()
+{
+    QSqlQuery query;
+    QString choose=ui->cobox_Discount->currentText();
+    //select Fmoney from fee where Fchoose=choose;
+    QString sql="select dMoney  from Discount where dChoose='"+choose+"';";
+    sqlExec(query,sql,1);
+    qDebug()<<query.value(0).toString();
+    query.first();
+    ui->lab_money->setText("$ "+query.value(0).toString());
+}
+
 //从数据库更新列表控件
 void UserDlg::updateList()
 {
@@ -91,13 +119,14 @@ void UserDlg::updateList()
     //    sqlExec(query,sql,3);
 
     //添加表项到listView
-    QString sql="select * from fee;";
+    QString sql="select * from UserTicket;";
     QSqlQueryModel *model = new QSqlQueryModel;
     model->setQuery(sql);
-    qDebug()<<sql;
-    model->setHeaderData(0, Qt::Horizontal, tr("Name"));
-    model->setHeaderData(1, Qt::Horizontal, tr("Salary"));
-    model->setHeaderData(2, Qt::Horizontal, tr("xxx"));
+    qDebug()<<"更新list查询:"<<sql;
+    model->setHeaderData(0, Qt::Horizontal, tr("票号"));
+    model->setHeaderData(1, Qt::Horizontal, tr("游览时间"));
+    model->setHeaderData(2, Qt::Horizontal, tr("优惠选项"));
+    model->setHeaderData(2, Qt::Horizontal, tr("票xx"));
 
     ui->tableView->setModel(model);
     // ui->tableView->show();

@@ -26,7 +26,7 @@
     <string>退出登录</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -95,22 +95,22 @@
           </item>
           <item>
            <property name="text">
-            <string>成人票</string>
+            <string>成人</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>小孩票</string>
+            <string>小孩</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>老人票</string>
+            <string>老人</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>团体票</string>
+            <string>团体</string>
            </property>
           </item>
          </widget>

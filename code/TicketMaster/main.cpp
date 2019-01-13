@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     connDataBase();
-    QSqlQuery query;
+    //QSqlQuery query;
    // sqlExec(query,"select * from fee;",3);
     MainWindow mainWnd;
     mainWnd.show();
