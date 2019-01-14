@@ -40,16 +40,27 @@ void AdminDlg::onQuery()
     QString queryDate=ui->date_query->date().toString("yyyy-MM-dd");
     QString dateType=ui->cobox_queryType->currentText();
     QString choose=ui->cobox_choose->currentText();
-
+    QString sales=0;
+    QString number=0;
     if(dateType=="按日查询")
-        sql="call procCntDaySold('"+queryDate+"','"+choose+"');";
+    {
+        //    QSqlQuery q;
+        //    q.exec("call qtestproc (@outval1, @outval2)");
+        //    q.exec("select @outval1, @outval2");
+        //    q.next();
+        //    qDebug() << q.value(0) << q.value(1); // outputs "42" and "43"
+        sql="call procCntDaySold('"+queryDate+"','"+choose+"',"+"@outval1, @outval2);";
+
+    }
     else if(dateType=="按月查询")
-        sql="call procCntMonthSold('"+queryDate.mid(5,2)+"','"+choose+"');";
-
-    sqlExec(query,sql,2);
-    QString sales="销售额:"+query.value(0).toString()+"\n";
-    QString number="销售量:"+query.value(1).toString();
-
+        sql="call procCntMonthSold('"+queryDate.mid(5,2)+"','"+choose+"',@outval1, @outval2);";
+    qDebug()<<sql;
+    query.exec(sql);
+    query.exec("select @outval1, @outval2;");
+    query.next();
+    qDebug()<<query.value(0).toString()<<query.value(1).toString();
+    sales="销售额:"+query.value(0).toString()+"\n";
+    number="销售量:"+query.value(1).toString();
     ui->edit_reslut->setText(sales+number);
 }
 
@@ -65,6 +76,32 @@ void AdminDlg::onClear()
 {
     ui->edit_reslut->clear();
 }
+
+
+
+/*
+ * QMYSQL Stored Procedure Support
+
+MySQL 5 introduces stored procedure support at the SQL level, but no API to control IN, OUT and INOUT parameters. Therefore, parameters have to be set and read using SQL commands instead of QSqlQuery::bindValue().
+
+Example stored procedure:
+
+create procedure qtestproc (OUT param1 INT, OUT param2 INT)
+BEGIN
+    set param1 = 42;
+    set param2 = 43;
+END
+Source code to access the OUT values:
+
+
+
+QSqlQuery q;
+q.exec("call qtestproc (@outval1, @outval2)");
+q.exec("select @outval1, @outval2");
+q.next();
+qDebug() << q.value(0) << q.value(1); // outputs "42" and "43"
+Note: @outval1 and @outval2 are variables local to the current connection and will not be affected by queries sent from another host or connection.
+*/
 
 
 

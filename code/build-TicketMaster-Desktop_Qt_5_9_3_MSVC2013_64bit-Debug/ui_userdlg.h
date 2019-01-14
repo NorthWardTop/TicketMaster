@@ -48,13 +48,13 @@ public:
     {
         if (UserDlg->objectName().isEmpty())
             UserDlg->setObjectName(QStringLiteral("UserDlg"));
-        UserDlg->resize(579, 524);
+        UserDlg->resize(735, 692);
         btn_logout = new QPushButton(UserDlg);
         btn_logout->setObjectName(QStringLiteral("btn_logout"));
-        btn_logout->setGeometry(QRect(230, 440, 75, 23));
+        btn_logout->setGeometry(QRect(340, 610, 75, 23));
         layoutWidget = new QWidget(UserDlg);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(40, 50, 471, 321));
+        layoutWidget->setGeometry(QRect(40, 50, 671, 511));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);

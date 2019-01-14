@@ -77,7 +77,7 @@ void UserDlg::onRefund()
     //如果当前日期在使用日期之前,则退票
     if(QDate::currentDate() <= useDate)
     {
-        QString sql="call procRefund('"+ticketId+"');";
+        QString sql="call procRefund("+ticketId+");";
         QSqlQuery query;
         qDebug()<<sql;
         sqlExec(query,sql);//执行查询
@@ -106,7 +106,7 @@ void UserDlg::onChooseChange()
     //select Fmoney from fee where Fchoose=choose;
     QString sql="select dMoney  from Discount where dChoose='"+choose+"';";
     sqlExec(query,sql,1);
-    qDebug()<<query.value(0).toString();
+    //qDebug()<<query.value(0).toString();
     query.first();
     ui->lab_money->setText("$ "+query.value(0).toString());
 }
