@@ -5,25 +5,25 @@
 # Template: app
 #############################################################################
 
-MAKEFILE      = Makefile.Release
+MAKEFILE      = Makefile.Debug
 
 ####### Compiler, tools and options
 
 CC            = cl
 CXX           = cl
-DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG
-CFLAGS        = -nologo -Zc:wchar_t -FS -O2 -MD -Zc:strictStrings -W3 $(DEFINES)
-CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -O2 -MD -Zc:strictStrings -W3 -w34100 -w34189 -w44996 -EHsc $(DEFINES)
-INCPATH       = -I..\TicketMaster -I. -ID:\QtInstall\5.9.3\msvc2013_64\include -ID:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets -ID:\QtInstall\5.9.3\msvc2013_64\include\QtGui -ID:\QtInstall\5.9.3\msvc2013_64\include\QtANGLE -ID:\QtInstall\5.9.3\msvc2013_64\include\QtSql -ID:\QtInstall\5.9.3\msvc2013_64\include\QtCore -Irelease -I. -ID:\QtInstall\5.9.3\msvc2013_64\mkspecs\win32-msvc 
+DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB
+CFLAGS        = -nologo -Zc:wchar_t -FS -Zi -MDd -W3 /Fddebug\TicketMaster.vc.pdb $(DEFINES)
+CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zi -MDd -W3 -w34100 -w34189 -w44996 -EHsc /Fddebug\TicketMaster.vc.pdb $(DEFINES)
+INCPATH       = -I..\TicketMaster -I. -ID:\QtInstall\5.9.3\msvc2013_64\include -ID:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets -ID:\QtInstall\5.9.3\msvc2013_64\include\QtGui -ID:\QtInstall\5.9.3\msvc2013_64\include\QtANGLE -ID:\QtInstall\5.9.3\msvc2013_64\include\QtSql -ID:\QtInstall\5.9.3\msvc2013_64\include\QtCore -Idebug -I. -ID:\QtInstall\5.9.3\msvc2013_64\mkspecs\win32-msvc 
 LINKER        = link
-LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:D:\QtInstall\5.9.3\msvc2013_64\lib D:\QtInstall\5.9.3\msvc2013_64\lib\qtmain.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Widgets.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Gui.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Sql.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Core.lib release\TicketMaster_resource.res 
+LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /DEBUG /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
+LIBS          = /LIBPATH:D:\QtInstall\5.9.3\msvc2013_64\lib D:\QtInstall\5.9.3\msvc2013_64\lib\qtmaind.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Widgetsd.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Guid.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Sqld.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Cored.lib debug\TicketMaster_resource.res 
 QMAKE         = D:\QtInstall\5.9.3\msvc2013_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl /NOLOGO
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = release\TicketMaster_resource.res
+RES_FILE      = debug\TicketMaster_resource.res
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -41,7 +41,7 @@ QINSTALL_PROGRAM = D:\QtInstall\5.9.3\msvc2013_64\bin\qmake.exe -install qinstal
 
 ####### Output directory
 
-OBJECTS_DIR   = release
+OBJECTS_DIR   = debug
 
 ####### Files
 
@@ -49,17 +49,17 @@ SOURCES       = ..\TicketMaster\main.cpp \
 		..\TicketMaster\mainwindow.cpp \
 		..\TicketMaster\admindlg.cpp \
 		..\TicketMaster\userdlg.cpp \
-		..\TicketMaster\database.cpp release\moc_mainwindow.cpp \
-		release\moc_admindlg.cpp \
-		release\moc_userdlg.cpp
-OBJECTS       = release\main.obj \
-		release\mainwindow.obj \
-		release\admindlg.obj \
-		release\userdlg.obj \
-		release\database.obj \
-		release\moc_mainwindow.obj \
-		release\moc_admindlg.obj \
-		release\moc_userdlg.obj
+		..\TicketMaster\database.cpp debug\moc_mainwindow.cpp \
+		debug\moc_admindlg.cpp \
+		debug\moc_userdlg.cpp
+OBJECTS       = debug\main.obj \
+		debug\mainwindow.obj \
+		debug\admindlg.obj \
+		debug\userdlg.obj \
+		debug\database.obj \
+		debug\moc_mainwindow.obj \
+		debug\moc_admindlg.obj \
+		debug\moc_userdlg.obj
 
 DIST          =  ..\TicketMaster\mainwindow.h \
 		..\TicketMaster\admindlg.h \
@@ -71,105 +71,105 @@ DIST          =  ..\TicketMaster\mainwindow.h \
 		..\TicketMaster\userdlg.cpp \
 		..\TicketMaster\database.cpp
 QMAKE_TARGET  = TicketMaster
-DESTDIR        = release\ #avoid trailing-slash linebreak
+DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = TicketMaster.exe
-DESTDIR_TARGET = release\TicketMaster.exe
+DESTDIR_TARGET = debug\TicketMaster.exe
 
 ####### Implicit rules
 
 .SUFFIXES: .c .cpp .cc .cxx
 
-{release}.cpp{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+{debug}.cpp{debug\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
-{release}.cc{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+{debug}.cc{debug\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
-{release}.cxx{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+{debug}.cxx{debug\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
-{release}.c{release\}.obj::
-	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
+{debug}.c{debug\}.obj::
+	$(CC) -c $(CFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
-{.}.cpp{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+{.}.cpp{debug\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
-{.}.cc{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+{.}.cc{debug\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
-{.}.cxx{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+{.}.cxx{debug\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
-{.}.c{release\}.obj::
-	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
+{.}.c{debug\}.obj::
+	$(CC) -c $(CFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
-{..\TicketMaster}.cpp{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+{..\TicketMaster}.cpp{debug\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
-{..\TicketMaster}.cc{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+{..\TicketMaster}.cc{debug\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
-{..\TicketMaster}.cxx{release\}.obj::
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+{..\TicketMaster}.cxx{debug\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
-{..\TicketMaster}.c{release\}.obj::
-	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
+{..\TicketMaster}.c{debug\}.obj::
+	$(CC) -c $(CFLAGS) $(INCPATH) -Fodebug\ @<<
 	$<
 <<
 
 ####### Build rules
 
 first: all
-all: Makefile.Release  $(DESTDIR_TARGET)
+all: Makefile.Debug  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_mainwindow.h ui_admindlg.h ui_userdlg.h $(OBJECTS) release\TicketMaster_resource.res
+$(DESTDIR_TARGET): ui_mainwindow.h ui_admindlg.h ui_userdlg.h $(OBJECTS) debug\TicketMaster_resource.res
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-release\main.obj release\mainwindow.obj release\admindlg.obj release\userdlg.obj release\database.obj release\moc_mainwindow.obj release\moc_admindlg.obj release\moc_userdlg.obj
+debug\main.obj debug\mainwindow.obj debug\admindlg.obj debug\userdlg.obj debug\database.obj debug\moc_mainwindow.obj debug\moc_admindlg.obj debug\moc_userdlg.obj
 $(LIBS)
 <<
 
-release\TicketMaster_resource.res: TicketMaster_resource.rc
-	rc /NOLOGO $(DEFINES) -fo release\TicketMaster_resource.res TicketMaster_resource.rc
+debug\TicketMaster_resource.res: TicketMaster_resource.rc
+	rc /NOLOGO -D_DEBUG $(DEFINES) -fo debug\TicketMaster_resource.res TicketMaster_resource.rc
 
 qmake: FORCE
-	@$(QMAKE) -o Makefile.Release ..\TicketMaster\TicketMaster.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
+	@$(QMAKE) -o Makefile.Debug ..\TicketMaster\TicketMaster.pro -spec win32-msvc
 
 qmake_all: FORCE
 
 dist:
-	$(ZIP) TicketMaster.zip $(SOURCES) $(DIST) ..\TicketMaster\TicketMaster.pro D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\spec_pre.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\common\angle.conf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\common\msvc-desktop.conf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\qconfig.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3danimation.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dcore.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dextras.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dinput.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dlogic.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquick.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3drender.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3drender_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axbase.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axbase_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axcontainer.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axserver.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axserver_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_bluetooth.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_charts.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_charts_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_concurrent.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_core.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_core_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_datavisualization.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_datavisualization_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_dbus.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_dbus_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_designer.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_designer_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_gamepad.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_gui.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_gui_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_help.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_help_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_location.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_location_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_multimedia.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_network.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_network_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_networkauth.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_networkauth_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_nfc.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_nfc_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_opengl.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_opengl_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_openglextensions.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_positioning.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_positioning_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_printsupport.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_purchasing.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_purchasing_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qml.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qml_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qmltest.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quick.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quick_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_remoteobjects.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_repparser.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_repparser_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_script.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_script_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_scripttools.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_scripttools_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_scxml.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_scxml_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_sensors.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_sensors_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_serialbus.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_serialport.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_serialport_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_sql.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_sql_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_svg.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_svg_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_testlib.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_testlib_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_texttospeech.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_uiplugin.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_uitools.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_uitools_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_webchannel.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_websockets.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_websockets_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_widgets.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_widgets_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_winextras.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_winextras_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_xml.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_xml_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_zlib_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\qt_functions.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\qt_config.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\win32-msvc\qmake.conf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\spec_post.prf .qmake.stash D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\exclusive_builds.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\common\msvc-version.conf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\toolchain.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\default_pre.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\win32\default_pre.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\resolve_config.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\exclusive_builds_post.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\default_post.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\build_pass.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\qml_debug.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\precompile_header.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\warn_on.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\qt.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\resources.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\moc.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\win32\opengl.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\uic.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\qmake_use.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\file_copies.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\win32\windows.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\testcase_targets.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\exceptions.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\yacc.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\lex.prf ..\TicketMaster\TicketMaster.pro D:\QtInstall\5.9.3\msvc2013_64\lib\qtmain.prl D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Widgets.prl D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Gui.prl D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Sql.prl D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Core.prl    D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\data\dummy.cpp ..\TicketMaster\mainwindow.h ..\TicketMaster\admindlg.h ..\TicketMaster\database.h ..\TicketMaster\macro.h ..\TicketMaster\userdlg.h ..\TicketMaster\main.cpp ..\TicketMaster\mainwindow.cpp ..\TicketMaster\admindlg.cpp ..\TicketMaster\userdlg.cpp ..\TicketMaster\database.cpp ..\TicketMaster\mainwindow.ui ..\TicketMaster\admindlg.ui ..\TicketMaster\userdlg.ui    
+	$(ZIP) TicketMaster.zip $(SOURCES) $(DIST) ..\TicketMaster\TicketMaster.pro D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\spec_pre.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\common\angle.conf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\common\msvc-desktop.conf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\qconfig.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3danimation.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dcore.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dextras.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dinput.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dlogic.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquick.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3drender.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_3drender_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axbase.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axbase_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axcontainer.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axserver.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_axserver_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_bluetooth.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_charts.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_charts_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_concurrent.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_core.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_core_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_datavisualization.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_datavisualization_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_dbus.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_dbus_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_designer.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_designer_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_gamepad.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_gui.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_gui_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_help.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_help_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_location.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_location_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_multimedia.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_network.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_network_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_networkauth.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_networkauth_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_nfc.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_nfc_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_opengl.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_opengl_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_openglextensions.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_positioning.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_positioning_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_printsupport.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_purchasing.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_purchasing_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qml.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qml_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qmltest.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quick.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quick_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_remoteobjects.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_repparser.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_repparser_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_script.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_script_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_scripttools.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_scripttools_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_scxml.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_scxml_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_sensors.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_sensors_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_serialbus.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_serialport.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_serialport_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_sql.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_sql_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_svg.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_svg_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_testlib.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_testlib_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_texttospeech.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_uiplugin.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_uitools.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_uitools_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_webchannel.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_websockets.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_websockets_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_widgets.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_widgets_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_winextras.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_winextras_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_xml.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_xml_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\modules\qt_lib_zlib_private.pri D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\qt_functions.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\qt_config.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\win32-msvc\qmake.conf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\spec_post.prf .qmake.stash D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\exclusive_builds.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\common\msvc-version.conf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\toolchain.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\default_pre.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\win32\default_pre.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\resolve_config.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\exclusive_builds_post.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\default_post.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\build_pass.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\precompile_header.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\warn_on.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\qt.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\resources.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\moc.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\win32\opengl.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\uic.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\qmake_use.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\file_copies.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\win32\windows.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\testcase_targets.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\exceptions.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\yacc.prf D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\lex.prf ..\TicketMaster\TicketMaster.pro D:\QtInstall\5.9.3\msvc2013_64\lib\qtmaind.prl D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Widgetsd.prl D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Guid.prl D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Sqld.prl D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Cored.prl    D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\data\dummy.cpp ..\TicketMaster\mainwindow.h ..\TicketMaster\admindlg.h ..\TicketMaster\database.h ..\TicketMaster\macro.h ..\TicketMaster\userdlg.h ..\TicketMaster\main.cpp ..\TicketMaster\mainwindow.cpp ..\TicketMaster\admindlg.cpp ..\TicketMaster\userdlg.cpp ..\TicketMaster\database.cpp ..\TicketMaster\mainwindow.ui ..\TicketMaster\admindlg.ui ..\TicketMaster\userdlg.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.obj release\mainwindow.obj release\admindlg.obj release\userdlg.obj release\database.obj release\moc_mainwindow.obj release\moc_admindlg.obj release\moc_userdlg.obj
-	-$(DEL_FILE) release\TicketMaster.exp
-	-$(DEL_FILE) release\TicketMaster_resource.res
+	-$(DEL_FILE) debug\main.obj debug\mainwindow.obj debug\admindlg.obj debug\userdlg.obj debug\database.obj debug\moc_mainwindow.obj debug\moc_admindlg.obj debug\moc_userdlg.obj
+	-$(DEL_FILE) debug\TicketMaster.exp debug\TicketMaster.vc.pdb debug\TicketMaster.ilk debug\TicketMaster.idb
+	-$(DEL_FILE) debug\TicketMaster_resource.res
 
 distclean: clean 
-	-$(DEL_FILE) .qmake.stash release\TicketMaster.lib
+	-$(DEL_FILE) .qmake.stash debug\TicketMaster.lib debug\TicketMaster.pdb
 	-$(DEL_FILE) $(DESTDIR_TARGET)
-	-$(DEL_FILE) Makefile.Release
+	-$(DEL_FILE) Makefile.Debug
 
 mocclean: compiler_moc_header_clean compiler_moc_source_clean
 
@@ -183,16 +183,16 @@ compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_predefs_make_all: release\moc_predefs.h
+compiler_moc_predefs_make_all: debug\moc_predefs.h
 compiler_moc_predefs_clean:
-	-$(DEL_FILE) release\moc_predefs.h
-release\moc_predefs.h: D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\data\dummy.cpp
-	cl -BxD:\QtInstall\5.9.3\msvc2013_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -O2 -MD -Zc:strictStrings -W3 -w34100 -w34189 -w44996 -E D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\data\dummy.cpp 2>NUL >release\moc_predefs.h
+	-$(DEL_FILE) debug\moc_predefs.h
+debug\moc_predefs.h: D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\data\dummy.cpp
+	cl -BxD:\QtInstall\5.9.3\msvc2013_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zi -MDd -W3 -w34100 -w34189 -w44996 -E D:\QtInstall\5.9.3\msvc2013_64\mkspecs\features\data\dummy.cpp 2>NUL >debug\moc_predefs.h
 
-compiler_moc_header_make_all: release\moc_mainwindow.cpp release\moc_admindlg.cpp release\moc_userdlg.cpp
+compiler_moc_header_make_all: debug\moc_mainwindow.cpp debug\moc_admindlg.cpp debug\moc_userdlg.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_mainwindow.cpp release\moc_admindlg.cpp release\moc_userdlg.cpp
-release\moc_mainwindow.cpp: D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QMainWindow \
+	-$(DEL_FILE) debug\moc_mainwindow.cpp debug\moc_admindlg.cpp debug\moc_userdlg.cpp
+debug\moc_mainwindow.cpp: D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QMainWindow \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qmainwindow.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qtwidgetsglobal.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qtguiglobal.h \
@@ -304,11 +304,11 @@ release\moc_mainwindow.cpp: D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QMa
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqldatabase.h \
 		..\TicketMaster\admindlg.h \
 		..\TicketMaster\mainwindow.h \
-		release\moc_predefs.h \
+		debug\moc_predefs.h \
 		D:\QtInstall\5.9.3\msvc2013_64\bin\moc.exe
-	D:\QtInstall\5.9.3\msvc2013_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -ID:/QtInstall/5.9.3/msvc2013_64/mkspecs/win32-msvc -IC:/Users/ATWN_Yhlee/Desktop/TicketMaster/code/TicketMaster -ID:/QtInstall/5.9.3/msvc2013_64/include -ID:/QtInstall/5.9.3/msvc2013_64/include/QtWidgets -ID:/QtInstall/5.9.3/msvc2013_64/include/QtGui -ID:/QtInstall/5.9.3/msvc2013_64/include/QtANGLE -ID:/QtInstall/5.9.3/msvc2013_64/include/QtSql -ID:/QtInstall/5.9.3/msvc2013_64/include/QtCore -I. -I"D:\Program Files\VC\INCLUDE" -I"D:\Program Files\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" ..\TicketMaster\mainwindow.h -o release\moc_mainwindow.cpp
+	D:\QtInstall\5.9.3\msvc2013_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -ID:/QtInstall/5.9.3/msvc2013_64/mkspecs/win32-msvc -IC:/Users/ATWN_Yhlee/Desktop/TicketMaster/code/TicketMaster -ID:/QtInstall/5.9.3/msvc2013_64/include -ID:/QtInstall/5.9.3/msvc2013_64/include/QtWidgets -ID:/QtInstall/5.9.3/msvc2013_64/include/QtGui -ID:/QtInstall/5.9.3/msvc2013_64/include/QtANGLE -ID:/QtInstall/5.9.3/msvc2013_64/include/QtSql -ID:/QtInstall/5.9.3/msvc2013_64/include/QtCore -I. -I"D:\Program Files\VC\INCLUDE" -I"D:\Program Files\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" ..\TicketMaster\mainwindow.h -o debug\moc_mainwindow.cpp
 
-release\moc_admindlg.cpp: D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
+debug\moc_admindlg.cpp: D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qdialog.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qtwidgetsglobal.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qtguiglobal.h \
@@ -410,11 +410,11 @@ release\moc_admindlg.cpp: D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDial
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qvector2d.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qtouchdevice.h \
 		..\TicketMaster\admindlg.h \
-		release\moc_predefs.h \
+		debug\moc_predefs.h \
 		D:\QtInstall\5.9.3\msvc2013_64\bin\moc.exe
-	D:\QtInstall\5.9.3\msvc2013_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -ID:/QtInstall/5.9.3/msvc2013_64/mkspecs/win32-msvc -IC:/Users/ATWN_Yhlee/Desktop/TicketMaster/code/TicketMaster -ID:/QtInstall/5.9.3/msvc2013_64/include -ID:/QtInstall/5.9.3/msvc2013_64/include/QtWidgets -ID:/QtInstall/5.9.3/msvc2013_64/include/QtGui -ID:/QtInstall/5.9.3/msvc2013_64/include/QtANGLE -ID:/QtInstall/5.9.3/msvc2013_64/include/QtSql -ID:/QtInstall/5.9.3/msvc2013_64/include/QtCore -I. -I"D:\Program Files\VC\INCLUDE" -I"D:\Program Files\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" ..\TicketMaster\admindlg.h -o release\moc_admindlg.cpp
+	D:\QtInstall\5.9.3\msvc2013_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -ID:/QtInstall/5.9.3/msvc2013_64/mkspecs/win32-msvc -IC:/Users/ATWN_Yhlee/Desktop/TicketMaster/code/TicketMaster -ID:/QtInstall/5.9.3/msvc2013_64/include -ID:/QtInstall/5.9.3/msvc2013_64/include/QtWidgets -ID:/QtInstall/5.9.3/msvc2013_64/include/QtGui -ID:/QtInstall/5.9.3/msvc2013_64/include/QtANGLE -ID:/QtInstall/5.9.3/msvc2013_64/include/QtSql -ID:/QtInstall/5.9.3/msvc2013_64/include/QtCore -I. -I"D:\Program Files\VC\INCLUDE" -I"D:\Program Files\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" ..\TicketMaster\admindlg.h -o debug\moc_admindlg.cpp
 
-release\moc_userdlg.cpp: D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
+debug\moc_userdlg.cpp: D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qdialog.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qtwidgetsglobal.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qtguiglobal.h \
@@ -520,9 +520,9 @@ release\moc_userdlg.cpp: D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialo
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qtsqlglobal.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqldatabase.h \
 		..\TicketMaster\userdlg.h \
-		release\moc_predefs.h \
+		debug\moc_predefs.h \
 		D:\QtInstall\5.9.3\msvc2013_64\bin\moc.exe
-	D:\QtInstall\5.9.3\msvc2013_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -ID:/QtInstall/5.9.3/msvc2013_64/mkspecs/win32-msvc -IC:/Users/ATWN_Yhlee/Desktop/TicketMaster/code/TicketMaster -ID:/QtInstall/5.9.3/msvc2013_64/include -ID:/QtInstall/5.9.3/msvc2013_64/include/QtWidgets -ID:/QtInstall/5.9.3/msvc2013_64/include/QtGui -ID:/QtInstall/5.9.3/msvc2013_64/include/QtANGLE -ID:/QtInstall/5.9.3/msvc2013_64/include/QtSql -ID:/QtInstall/5.9.3/msvc2013_64/include/QtCore -I. -I"D:\Program Files\VC\INCLUDE" -I"D:\Program Files\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" ..\TicketMaster\userdlg.h -o release\moc_userdlg.cpp
+	D:\QtInstall\5.9.3\msvc2013_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -ID:/QtInstall/5.9.3/msvc2013_64/mkspecs/win32-msvc -IC:/Users/ATWN_Yhlee/Desktop/TicketMaster/code/TicketMaster -ID:/QtInstall/5.9.3/msvc2013_64/include -ID:/QtInstall/5.9.3/msvc2013_64/include/QtWidgets -ID:/QtInstall/5.9.3/msvc2013_64/include/QtGui -ID:/QtInstall/5.9.3/msvc2013_64/include/QtANGLE -ID:/QtInstall/5.9.3/msvc2013_64/include/QtSql -ID:/QtInstall/5.9.3/msvc2013_64/include/QtCore -I. -I"D:\Program Files\VC\INCLUDE" -I"D:\Program Files\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" ..\TicketMaster\userdlg.h -o debug\moc_userdlg.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -553,7 +553,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-release\main.obj: ..\TicketMaster\main.cpp D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QApplication \
+debug\main.obj: ..\TicketMaster\main.cpp D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QApplication \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qapplication.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qtwidgetsglobal.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qtguiglobal.h \
@@ -681,7 +681,7 @@ release\main.obj: ..\TicketMaster\main.cpp D:\QtInstall\5.9.3\msvc2013_64\includ
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\QSqlRecord \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqlrecord.h
 
-release\mainwindow.obj: ..\TicketMaster\mainwindow.cpp ../TicketMaster/mainwindow.h \
+debug\mainwindow.obj: ..\TicketMaster\mainwindow.cpp ../TicketMaster/mainwindow.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QMainWindow \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qmainwindow.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qtwidgetsglobal.h \
@@ -846,7 +846,7 @@ release\mainwindow.obj: ..\TicketMaster\mainwindow.cpp ../TicketMaster/mainwindo
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\QPainter \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qpainter.h
 
-release\admindlg.obj: ..\TicketMaster\admindlg.cpp ../TicketMaster/admindlg.h \
+debug\admindlg.obj: ..\TicketMaster\admindlg.cpp ../TicketMaster/admindlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qdialog.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qtwidgetsglobal.h \
@@ -1017,7 +1017,7 @@ release\admindlg.obj: ..\TicketMaster\admindlg.cpp ../TicketMaster/admindlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\QSql \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtCore\QDebug
 
-release\userdlg.obj: ..\TicketMaster\userdlg.cpp ../TicketMaster/userdlg.h \
+debug\userdlg.obj: ..\TicketMaster\userdlg.cpp ../TicketMaster/userdlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qdialog.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qtwidgetsglobal.h \
@@ -1186,7 +1186,7 @@ release\userdlg.obj: ..\TicketMaster\userdlg.cpp ../TicketMaster/userdlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QMessageBox \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qmessagebox.h
 
-release\database.obj: ..\TicketMaster\database.cpp ../TicketMaster/database.h \
+debug\database.obj: ..\TicketMaster\database.cpp ../TicketMaster/database.h \
 		../TicketMaster/macro.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlDatabase \
 		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqldatabase.h \
@@ -1257,11 +1257,11 @@ release\database.obj: ..\TicketMaster\database.cpp ../TicketMaster/database.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtCore\qsharedpointer.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtCore\qsharedpointer_impl.h
 
-release\moc_mainwindow.obj: release\moc_mainwindow.cpp 
+debug\moc_mainwindow.obj: debug\moc_mainwindow.cpp 
 
-release\moc_admindlg.obj: release\moc_admindlg.cpp 
+debug\moc_admindlg.obj: debug\moc_admindlg.cpp 
 
-release\moc_userdlg.obj: release\moc_userdlg.cpp 
+debug\moc_userdlg.obj: debug\moc_userdlg.cpp 
 
 ####### Install
 

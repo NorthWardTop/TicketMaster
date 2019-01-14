@@ -18,7 +18,8 @@ public:
     ~MainWindow();
 private slots:
     void onLogin();
-
+public:
+//    void paintEvent(QPaintEvent *event);
 private:
     Ui::MainWindow *ui;
 

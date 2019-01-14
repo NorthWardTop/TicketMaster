@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include <QPainter>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,6 +16,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&userWnd,SIGNAL(startMainWnd()),this,SLOT(show()));         //来自userWnd窗口的信号,显示主窗口
     connect(&adminWnd,SIGNAL(startMainWnd()),this,SLOT(show()));         //来自adminWnd窗口的信号,显示主窗口
 
+ //   this->setStyleSheet("background-image:url(:/km1.jpg");
+//    QPixmap pixmap = QPixmap("./1.png").scaled(window->size());
+//    QPalette palette(window->palette());
+//    palette.setBrush(QPalette::Background, QBrush(pixmap));
+//    this->setPalette(palette)
 }
 
 MainWindow::~MainWindow()
@@ -46,4 +52,10 @@ void MainWindow::onLogin()
     }
 }
 
+
+//void MainWindow::paintEvent(QPaintEvent *event)
+//{
+//   QPainter painter(this);
+//   painter.drawPixmap(0,0,width(),height(),QPixmap("./res/km1.jpg"));
+//}
 

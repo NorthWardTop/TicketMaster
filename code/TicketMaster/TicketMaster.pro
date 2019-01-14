@@ -44,3 +44,8 @@ FORMS += \
     userdlg.ui
 
 DISTFILES +=
+
+
+
+RC_ICONS = "./res/icon.ico"
+

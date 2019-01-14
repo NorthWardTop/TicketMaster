@@ -17,13 +17,13 @@ CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zi -MDd -W3 -
 INCPATH       = -I..\TicketMaster -I. -ID:\QtInstall\5.9.3\msvc2013_64\include -ID:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets -ID:\QtInstall\5.9.3\msvc2013_64\include\QtGui -ID:\QtInstall\5.9.3\msvc2013_64\include\QtANGLE -ID:\QtInstall\5.9.3\msvc2013_64\include\QtSql -ID:\QtInstall\5.9.3\msvc2013_64\include\QtCore -Idebug -I. -ID:\QtInstall\5.9.3\msvc2013_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /DEBUG /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:D:\QtInstall\5.9.3\msvc2013_64\lib D:\QtInstall\5.9.3\msvc2013_64\lib\qtmaind.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Widgetsd.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Guid.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Sqld.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Cored.lib 
+LIBS          = /LIBPATH:D:\QtInstall\5.9.3\msvc2013_64\lib D:\QtInstall\5.9.3\msvc2013_64\lib\qtmaind.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Widgetsd.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Guid.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Sqld.lib D:\QtInstall\5.9.3\msvc2013_64\lib\Qt5Cored.lib debug\TicketMaster_resource.res 
 QMAKE         = D:\QtInstall\5.9.3\msvc2013_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl /NOLOGO
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = debug\TicketMaster_resource.res
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -144,11 +144,14 @@ DESTDIR_TARGET = debug\TicketMaster.exe
 first: all
 all: Makefile.Debug  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_mainwindow.h ui_admindlg.h ui_userdlg.h $(OBJECTS) 
+$(DESTDIR_TARGET): ui_mainwindow.h ui_admindlg.h ui_userdlg.h $(OBJECTS) debug\TicketMaster_resource.res
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
 debug\main.obj debug\mainwindow.obj debug\admindlg.obj debug\userdlg.obj debug\database.obj debug\moc_mainwindow.obj debug\moc_admindlg.obj debug\moc_userdlg.obj
 $(LIBS)
 <<
+
+debug\TicketMaster_resource.res: TicketMaster_resource.rc
+	rc /NOLOGO -D_DEBUG $(DEFINES) -fo debug\TicketMaster_resource.res TicketMaster_resource.rc
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Debug ..\TicketMaster\TicketMaster.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -161,6 +164,7 @@ dist:
 clean: compiler_clean 
 	-$(DEL_FILE) debug\main.obj debug\mainwindow.obj debug\admindlg.obj debug\userdlg.obj debug\database.obj debug\moc_mainwindow.obj debug\moc_admindlg.obj debug\moc_userdlg.obj
 	-$(DEL_FILE) debug\TicketMaster.exp debug\TicketMaster.vc.pdb debug\TicketMaster.ilk debug\TicketMaster.idb
+	-$(DEL_FILE) debug\TicketMaster_resource.res
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash debug\TicketMaster.lib debug\TicketMaster.pdb
@@ -673,7 +677,9 @@ debug\main.obj: ..\TicketMaster\main.cpp D:\QtInstall\5.9.3\msvc2013_64\include\
 		../TicketMaster/macro.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\QSqlDatabase \
 		D:\QtInstall\5.9.3\msvc2013_64\include\Qtsql\qsqldatabase.h \
-		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\QSql
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\QSql \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\QSqlRecord \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtSql\qsqlrecord.h
 
 debug\mainwindow.obj: ..\TicketMaster\mainwindow.cpp ../TicketMaster/mainwindow.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QMainWindow \
@@ -836,7 +842,9 @@ debug\mainwindow.obj: ..\TicketMaster\mainwindow.cpp ../TicketMaster/mainwindow.
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qabstractbutton.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QWidget \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QMessageBox \
-		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qmessagebox.h
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\qmessagebox.h \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\QPainter \
+		D:\QtInstall\5.9.3\msvc2013_64\include\QtGui\qpainter.h
 
 debug\admindlg.obj: ..\TicketMaster\admindlg.cpp ../TicketMaster/admindlg.h \
 		D:\QtInstall\5.9.3\msvc2013_64\include\QtWidgets\QDialog \
