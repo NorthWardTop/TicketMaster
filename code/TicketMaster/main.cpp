@@ -1,17 +1,20 @@
-
 #include <QApplication>
 #include <QDebug>
 #include "mainwindow.h"
-
 #include "database.h"
-
 #include <QSqlRecord>
-//全部变量---主窗口
-
-
 
 int main(int argc, char *argv[])
 {
+    QApplication a(argc, argv);
+    connDataBase();
+    MainWindow mainWnd;
+    mainWnd.show();
+    return a.exec();
+}
+
+
+
 //    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
 //    db.setHostName("127.0.0.1");
 //    db.setDatabaseName("ticketmaster");
@@ -56,8 +59,7 @@ int main(int argc, char *argv[])
 //    QString sql="select * from fee;";
 //    sqlExec(query,sql,2);
 
-    QApplication a(argc, argv);
-    connDataBase();
+
 //#if 0
 
 //    QSqlQuery query;
@@ -97,10 +99,3 @@ int main(int argc, char *argv[])
 //    qDebug() << q.value(0) << q.value(1); // outputs "42" and "43"
 
 // #endif//bbbb
-
-    MainWindow mainWnd;
-    mainWnd.show();
-    return a.exec();
-
-
-}

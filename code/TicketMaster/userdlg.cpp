@@ -17,9 +17,8 @@ UserDlg::UserDlg(QWidget *parent) :
     ui->date_useDate->setCalendarPopup(true);//设置日期弹出式选择
     ui->date_useDate->setDisplayFormat("yyyy-MM-dd");//设置日期显示格式
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);//设置整行选中
-    //ui->lab_money->setFont(QFont( "Timers" , 28 ,  QFont::Bold));
-    //ui->lab_money->setFont(QFont( "微软雅黑" , 28 ,  QFont::Bold));
     ui->lab_money->setStyleSheet("background-color: rgb(250, 0, 0);font-size:60px;color:blue");
+
     //设置信号和槽
     connect(ui->btn_buy,SIGNAL(clicked(bool)),this,SLOT(onBuy()));    //点击buy,执行onBuy
     connect(ui->btn_refund,SIGNAL(clicked(bool)),this,SLOT(onRefund())); //点击refund,执行onRefund
@@ -45,7 +44,7 @@ void UserDlg::onBuy()
 
     if(tmpDate>=QDate::currentDate())
     {
-        //将执行SQL语句: call procBuyTicket(useDate,choose+)
+        //将执行SQL语句: call procBuyTicket(useDate,choose,user)
         QString sql=  "call procBuyTicket('"+useDate+"','"+choose+"','user');";//调用购票存储过程
         QSqlQuery query;
         sqlExec(query,sql,3);
@@ -63,7 +62,7 @@ void UserDlg::onBuy()
 //槽:userdlg窗口,点击退票,实现退票逻辑
 void UserDlg::onRefund()
 {
-    //这两行只能获取选中的单元格数据
+    //这两行只能获取选中单个的单元格数据
     //    QString id=ui->tableView->currentIndex().data().toString();
     //    qDebug()<<id;
     int curRow= ui->tableView->currentIndex().row();//获取选中行号
@@ -86,7 +85,7 @@ void UserDlg::onRefund()
     else
     {
         qDebug()<<"超过游览时间, 不能退票!";
-        //弹出提示框
+        //弹出提示框不在允许的退票时间内
         QMessageBox::information(this, QString::fromLocal8Bit("Refund failed"),QString::fromLocal8Bit("No refund is allowed after the tour time."));
     }
 }
@@ -103,10 +102,8 @@ void UserDlg::onChooseChange()
 {
     QSqlQuery query;
     QString choose=ui->cobox_Discount->currentText();
-    //select Fmoney from fee where Fchoose=choose;
     QString sql="select dMoney  from Discount where dChoose='"+choose+"';";
     sqlExec(query,sql,1);
-    //qDebug()<<query.value(0).toString();
     query.first();
     ui->lab_money->setText("$ "+query.value(0).toString());
 }
@@ -114,10 +111,6 @@ void UserDlg::onChooseChange()
 //从数据库更新列表控件
 void UserDlg::updateList()
 {
-    //    QSqlQuery query;
-    //    QString sql="select * from fee;";//这句将查询本用户的所有票信息
-    //    sqlExec(query,sql,3);
-
     //添加表项到listView
     QString sql="select * from UserTicket;";
     QSqlQueryModel *model = new QSqlQueryModel;
@@ -129,7 +122,6 @@ void UserDlg::updateList()
     model->setHeaderData(2, Qt::Horizontal, tr("票xx"));
 
     ui->tableView->setModel(model);
-    // ui->tableView->show();
 }
 
 

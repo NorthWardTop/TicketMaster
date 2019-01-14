@@ -7,8 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-
     //设置MainWindow初始特性
 
     //设置信号和槽
@@ -37,19 +35,15 @@ void MainWindow::onLogin()
     }
     else if(userName=="user")
     {
-        //QString userTitle = QString("用户购票-%1").arg(userName);
         this->userWnd.userName=userName;    //将用户名初始化
         this->userWnd.setWindowTitle(QString("用户购票_")+userName);
         this->userWnd.show(); //跳转用户购票窗口
         this->close();  //关闭登录主窗口
     }
     else
-    {
+    {   //弹出消息, 用户名不存在
         QMessageBox::information(this,"user does not exist","User does not exist, please re-enter!");
     }
-
-
-   //  this->userWnd.show(); //跳转用户购票窗口
 }
 
 

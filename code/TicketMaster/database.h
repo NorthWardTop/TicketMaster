@@ -15,14 +15,3 @@ extern int connDataBase();
 extern void sqlExec(QSqlQuery& query, QString sql, int col=0);
 
 #endif // DATABASE_H
-
-//void MainWindow::on_pushButton_clicked()
-//{
-//    QSqlQuery query;
-//    int id = ui->spinBox->value();
-//    query.exec(QString("select name from student where id =%1")
-//               .arg(id));
-//    query.next();
-//    QString name = query.value(0).toString();
-//    qDebug() << name;
-//}

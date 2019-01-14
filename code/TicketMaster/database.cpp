@@ -16,7 +16,6 @@ int connDataBase()
         qDebug() << "\t驱动可用:"<< driver;
     qDebug() << "End";
 
-
     QSqlDatabase db = QSqlDatabase::addDatabase(DB_DRIVERS);
     db.setHostName(HOST);
     db.setDatabaseName(DB_NAME);
@@ -33,25 +32,6 @@ int connDataBase()
         qDebug() << "数据库打开错误!";
         ret=0;
     }
-
-    //    QSqlQuery query;
-    //    QString sql = "select * from fee;";
-    //    qDebug() << sql;
-    //    query.prepare(sql);
-
-    //    if(!query.exec())
-    //    {
-    //        qDebug()<<"query.lastError()";
-    //    }
-    //    else
-    //    {
-    //        while(query.next())
-    //          {
-    //              qDebug()<<query.value(0).toString()<<query.value(1).toString();
-    //          }
-    //    }
-
-
     return ret;
 }
 
@@ -59,8 +39,6 @@ int connDataBase()
 //根据传入QSqlQuery和sql语句查询(游标,sql语句)
 void sqlExec(QSqlQuery& query, QString sql, int col)
 {
-//    QSqlError sqlError;
-//    sqlError=db.lastError();
     qDebug() << "当前执行:"<<sql;
     query.prepare(sql);//指定sql语句
     if(!query.exec())//执行查询
